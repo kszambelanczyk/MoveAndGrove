@@ -1,0 +1,156 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+
+$font-family-base: Roboto !default;
+
+$white: #fff;
+$color1: #fade26;
+$color2: #3B3409;
+
+
+$navbar-dark-color:                 rgba($white, .75) !default;
+$navbar-dark-hover-color:           $white !default;
+$navbar-dark-active-color:          #fff !default;
+$navbar-dark-disabled-color:        rgba($white, .25) !default;
+
+@import "bootstrap/scss/bootstrap";
+
+
+body.body-home {
+    background-image: url(/images/4s_b.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: $color2;
+
+
+    color: $white;
+}
+
+.content-title-background {
+    background-image: url(/images/2s_y_n.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+// $break-small: 573px;
+// $break-medium: 768px;
+
+section.header {
+    padding: 30px;
+}
+
+a.navbar-brand{
+    color: $white;
+    img {
+        height: 50px;
+    }
+    span {
+        float: right;
+        font-weight: 300;
+        font-size: 2rem;
+        margin-left: 15px;
+    }
+    &:hover {
+        color: $white;
+    }
+    &:focus {
+        outline-width: 0px;
+    }
+}
+
+
+div.content-title {
+    padding: 70px 0 100px 0;
+    color: $white;
+    h1 {
+        text-transform: uppercase;
+        font-size: 5rem;
+        text-align: center;
+    }
+}
+
+.navbar-toggler:focus {
+	// outline-color: $color2;
+}
+
+.nav-item {
+    margin: 0.5rem;
+}
+a.nav-link {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    position: relative;
+    text-decoration: none;
+    padding: 0!important;
+    color: $white;
+    letter-spacing: 0.1rem;
+    margin-left: 20px;
+
+    &:hover {
+        color: $color1;
+    }
+}
+
+
+.jumbotron-home {
+    padding-left: 6rem;
+    padding-top: 25vh;
+    background-color: inherit;
+    h1 {
+        font-size: 6rem;
+        letter-spacing: 0.5rem;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: $color1;
+    }
+    p.title {
+        line-height: 3.5rem;
+        color: $color1;
+        text-transform: uppercase;
+    }
+    .line1 {
+        font-size: 7rem;
+        font-weight: 600;
+        letter-spacing: 1.6rem;
+    }
+    .line2 {
+        font-size: 4rem;
+        font-weight: 400;
+        letter-spacing: 1.8rem;
+    }
+}
+
+.activity-type-img-td {
+    svg {
+        width: 50px;
+        fill: red;
+    }
+}
+
+section#content {
+    background-color: #d4d2c8;
+
+    .row {
+        padding-top: 15px;
+    }
+    .card {
+        height: 200px;
+    }
+
+}

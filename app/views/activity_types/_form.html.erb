@@ -1,0 +1,27 @@
+<%= form_with(model: activity_type, local: true, class: "") do |f| %>
+
+  <% if activity_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(activity_type.errors.count, "error") %> prohibited this activity_type from being saved:</h2>
+
+      <ul>
+        <% activity_type.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label>Name</label>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-group">
+    <label>Image:</label>
+    <%= image_tag(activity_type.image_url) if activity_type.image? %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit "Create" %>
+<% end %>
