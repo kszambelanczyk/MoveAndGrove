@@ -8,7 +8,54 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.includes(:activity_type).where(user_id: current_user.id)
+
+    # default show activities starting two months ago
+    from_date = Time.now - 2.months
+    to_date = Time.now + 2.months
+
+    if(params.has_key?(:start_date))
+      from_date = Time.parse(params[:start_date]) - 3.months
+      to_date = Time.parse(params[:start_date]) + 3.months
+    end
+
+    @activities = Activity.includes(:activity_type).where("user_id=? and start>=? and start<=?", current_user.id, from_date, to_date)
+
+    #chart_data = Activity.includes(:activity_type).where("user_id=? and start>=? and start<=?", current_user.id, Time.now - 30.days, Time.now)
+
+    if Rails.env.production?
+      sql = <<-SQL
+        SELECT
+          date_trunc('day', user_logs.timestamp) "start_date",
+          SUM(duration) as duration
+        FROM activities
+        WHERE user_id=#{ActiveRecord::Base.connection.quote(current_user.id)}
+        GROUP BY 1
+      SQL
+    else
+      sql = <<-SQL
+        SELECT
+          SUM(duration) as duration,
+          date(start) as start_date
+        FROM activities
+        WHERE user_id=#{ActiveRecord::Base.connection.quote(current_user.id)}
+        GROUP BY date(start)
+      SQL
+    end
+
+    data = Activity.find_by_sql(sql).index_by { |t| t.start_date }
+
+    @minutes_data = {}
+    (0..30).each { |i|
+      i = 30 - i
+      day = (Time.now - i.days).to_date
+      count = 0
+      if !data[day.strftime("%F")].nil?
+        count = data[day.strftime("%F")][:duration]
+      end
+      @minutes_data[day.strftime("%b %d")] = count
+    }
+
+    puts @minutes_data
   end
 
   # GET /activities/1

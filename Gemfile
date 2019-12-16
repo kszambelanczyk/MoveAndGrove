@@ -35,6 +35,8 @@ gem "rolify"
 
 gem "simple_calendar"
 
+gem "chartkick"
+
 gem 'carrierwave', '~> 2.0'
 
 group :development, :test do
