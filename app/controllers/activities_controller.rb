@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
     if Rails.env.production?
       sql = <<-SQL
         SELECT
-          date_trunc('day', user_logs.timestamp) "start_date",
+          date_trunc('day', start) "start_date",
           SUM(duration) as duration
         FROM activities
         WHERE user_id=#{ActiveRecord::Base.connection.quote(current_user.id)}
