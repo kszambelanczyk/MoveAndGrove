@@ -20,8 +20,8 @@ class ActivitiesController < ApplicationController
 
     @activities = Activity.includes(:activity_type).where("user_id=? and start>=? and start<=?", current_user.id, from_date, to_date)
 
-    #chart_data = Activity.includes(:activity_type).where("user_id=? and start>=? and start<=?", current_user.id, Time.now - 30.days, Time.now)
 
+    # duration per day
     if Rails.env.production?
       sql = <<-SQL
         SELECT
@@ -41,6 +41,8 @@ class ActivitiesController < ApplicationController
         GROUP BY date(start)
       SQL
     end
+
+
 
     data = Activity.find_by_sql(sql).index_by { |t| t.start_date }
 
@@ -68,6 +70,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
 
     @activity.start = Time.now
+
+    puts @activity.start
 
   end
 
