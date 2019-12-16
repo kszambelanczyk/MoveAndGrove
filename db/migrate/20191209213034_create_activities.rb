@@ -5,8 +5,9 @@ class CreateActivities < ActiveRecord::Migration[6.0]
       t.integer :duration
       t.datetime :start
 
-      t.references :activity_types, foreign_key: true
-      t.references :users, foreign_key: true
+      t.belongs_to :activity_type, foreign_key: true
+
+      t.belongs_to :user, foreign_key: true
 
       t.timestamps
     end

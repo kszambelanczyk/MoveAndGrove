@@ -13,12 +13,12 @@
         <ul class="navbar-nav ml-auto ">
           <%if user_signed_in?%>
             <li class="nav-item"><%= link_to "Log out", destroy_user_session_path, class: "nav-link", :method => :delete %></li>
-            <li class="nav-item"><%= link_to "Activities", activities_path, class: "nav-link" %></li>
+            <li class="nav-item <%= 'active' if current_page?(activities_path) %>"><%= link_to "Activities", activities_path, class: "nav-link" %></li>
           <%else%>
             <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
           <%end%>
-          <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Contact", contact_path, class: "nav-link" %></li>
+          <li class="nav-item <%= 'active' if current_page?(about_path) %>"><%= link_to "About", about_path, class: "nav-link" %></li>
+          <li class="nav-item <%= 'active' if current_page?(contact_path) %>"><%= link_to "Contact", contact_path, class: "nav-link" %></li>
         </ul>
       </div>
     </div>

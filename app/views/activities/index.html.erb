@@ -1,22 +1,63 @@
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<section>
+  <div class="container-fluid status-part">
+    <% if false %>
+      <div class="row">
+        <div class="col-12 text-center">
+          <%= link_to "Add activity", new_activity_path, class: "btn btn-yellow"%>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+    <div class="row">
+      <div class="col-12 text-center">
+        <%= link_to "Add activity", new_activity_path, class: "status-link"%>
+      </div>
+    </div>
+  </div>
 
-<br>
+  <% if !notice.nil? %>
+    <div class="container-fluid notice-part">
+        <div class="row">
+          <div class="col-12">
+            <p class="notice"><%= notice %></p>
+          </div>
+        </div>
+    </div>
+  <% end %>
 
-<%= link_to 'New Activity', new_activity_path %>
+  <div class="container-fluid content-part">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Activities calendar</h5>
+            <%= month_calendar(attribute: :start, events: @activities) do |date, activities| %>
+              <p class="day-label"><%= date.day %></p>
+
+              <% activities.each do |activity| %>
+                  <%= link_to activity_path(activity.id), class: "calendar-activity-item" do %>
+                    <%= activity.start.strftime("%H:%M") %>
+                    <%= activity.activity_type.name %>
+                    <%= activity.duration %> min
+                  <% end %>
+              <% end %>              
+
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Summary</h5>
+            <p>Total hours:</p>
+            <p>Total calories burned:</p>
+            <p>Favorite activity:</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

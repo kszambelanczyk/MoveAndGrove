@@ -1,17 +1,66 @@
-<%= form_with(model: activity, local: true) do |form| %>
-  <% if activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+<script>
+  var startTime = '<%= activity.start.nil? ? 'null' : activity.start.strftime("%FT%T%:z")%>';
+  var activityTypes = <%=raw  ActivityType.all.map{|item| {id: item.id, name: item.name, image: show_svg(item.image.url)}}.to_json%>;
+  var activityTypeSelected = <%= activity.activity_type_id.nil? ? 'null' : activity.activity_type_id %>;
+</script>
 
-      <ul>
-        <% activity.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+
+<div id='form-app' v-cloak>
+
+  <%= form_with(model: activity, local: true) do |form| %>
+
+    <div class="form-group">
+      <label>Please select activity</label>
+
+      <div class="activity-types-list">
+        <div v-for="item in activityTypes" class="item" v-bind:class="{ active: item.id == activityTypeSelected }" @click="itemClicked(item)">
+          <div v-html="item.image"></div>
+          <span>{{item.name}}</span>
+        </div>
+      </div>
+      <input type="hidden" name="activity[activity_type_id]" :value="activityTypeSelected">
+      <% if activity.errors[:activity_type].any? %>
+        <% activity.errors[:activity_type].each do |message| %>
+          <div class="error-note"><%= message %></div>
         <% end %>
-      </ul>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Activity start time</label>
+          <datetime type="datetime" input-class="form-control" v-model="datetime" hidden-name="activity[start]"></datetime>
+          <% if activity.errors[:start].any? %>
+            <% activity.errors[:start].each do |message| %>
+              <div class="error-note"><%= message %></div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Activity duration in minutes</label>
+          <%= form.number_field :duration, class: "form-control" %>
+          <% if activity.errors[:duration].any? %>
+            <% activity.errors[:duration].each do |message| %>
+              <div class="error-note"><%= message %></div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="actions text-center">
+      <%= form.submit class: 'btn btn-submit' %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+
+</div>
+
+
+

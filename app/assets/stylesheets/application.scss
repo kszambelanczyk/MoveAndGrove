@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  */
 
 
@@ -17,7 +18,8 @@ $font-family-base: Roboto !default;
 
 $white: #fff;
 $color1: #fade26;
-$color2: #3B3409;
+$color2: #222222;
+$color3: #edf1f5;
 
 
 $navbar-dark-color:                 rgba($white, .75) !default;
@@ -26,7 +28,12 @@ $navbar-dark-active-color:          #fff !default;
 $navbar-dark-disabled-color:        rgba($white, .25) !default;
 
 @import "bootstrap/scss/bootstrap";
+@import "pc-bootstrap4-datetimepicker/src/sass/bootstrap-datetimepicker-build.css";
 
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+// @import "@fortawesome/fontawesome-free/css/all";
 
 body.body-home {
     background-image: url(/images/4s_b.jpg);
@@ -41,7 +48,7 @@ body.body-home {
 }
 
 .content-title-background {
-    background-image: url(/images/2s_y_n.jpg);
+    background-image: url(/images/2s_y_b_n.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -86,7 +93,7 @@ div.content-title {
 }
 
 .navbar-toggler:focus {
-	// outline-color: $color2;
+
 }
 
 .nav-item {
@@ -142,15 +149,121 @@ a.nav-link {
         fill: red;
     }
 }
+.svg-image {
+    width: 50px;
+    background-color: white;
+}
 
-section#content {
-    background-color: #d4d2c8;
+.content-main {
+    background-color: $color3;
+}
+
+.content-part {
+    background-color: $color3;
 
     .row {
-        padding-top: 15px;
+        padding: 30px 0;
     }
     .card {
-        height: 200px;
+        border: 0 solid rgb(0,0,0);
+    }
+}
+
+.status-part {
+    background-color: white; 
+    a.status-link {
+        display: inline-block;
+        margin: 15px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        font-size: 1.5rem;
+        color: $color2;
+        text-decoration: underline;
+        &:hover {
+            // color: $color1;
+        }
+    }
+}
+
+.btn-yellow {
+    margin: 15px 0;
+    font-size: 1.5rem;
+    background-color: $color1;
+    color: black;
+    text-transform: uppercase;
+    &:focus{
+        box-shadow: none;
+    }
+}
+.form-group {
+    .error-note {
+        font-size: 0.9rem;
+        color: #ff3333;
+    }
+}
+
+p.status {
+    color: $color2;
+    display: inline-block;
+    margin: 15px 0;
+}
+
+input.btn-submit {
+    color: $color2;
+    background-color: $color1;    
+}
+
+.activity-types-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    justify-items: center;
+    align-items: center;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    .item {
+        cursor: pointer;
+        background-color: $color3;
+        width: 120px;
+        height: 120px;
+        padding: 23px 0 0 0;
+        text-align: center;
+        border: 2px solid $color3;
+        svg {
+            width: 50px;
+        }
+        &:hover {
+            border: 2px solid $color1;
+        }
+        span {
+            user-select: none;
+        }
+    }
+    .active {
+        background-color: $color1!important;
     }
 
+}
+
+.simple-calendar {
+    th {
+        padding: 0.2rem;
+    }
+    .day {
+        padding: 0.2rem;
+    }
+    .day-label {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+    .calendar-activity-item {
+        display: block;
+        background-color: $color1;
+        color: $color2;
+        font-size: 0.9rem;
+        padding: 2px;
+        margin: 4px 0;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }

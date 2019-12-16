@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <label>Image:</label>
-    <%= image_tag(activity_type.image_url) if activity_type.image? %>
+    <%= image_tag(activity_type.image_url, class:"svg-image") if activity_type.image? %>
     <%= f.file_field :image %>
   </div>
 

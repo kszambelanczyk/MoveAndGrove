@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem "rolify"
+
+gem "simple_calendar"
 
 gem 'carrierwave', '~> 2.0'
 
@@ -39,6 +42,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'seed_dump'
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

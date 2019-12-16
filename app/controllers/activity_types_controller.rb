@@ -1,5 +1,14 @@
 class ActivityTypesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_is_admin
   before_action :set_activity_type, only: [:show, :edit, :update, :destroy]
+
+
+  def check_is_admin
+    if !current_user.has_role? :admin
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
 
   def index
       @activity_types = ActivityType.all

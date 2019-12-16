@@ -1,6 +1,24 @@
-<h1>Editing Activity</h1>
+<section class="content-main">
+  <div class="container-fluid status-part">
+    <div class="row">
+      <div class="col-12 text-center">
 
-<%= render 'form', activity: @activity %>
+        <p class="status">Edit activity</p>
 
-<%= link_to 'Show', @activity %> |
-<%= link_to 'Back', activities_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container content-part">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <%= render 'form', activity: @activity %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

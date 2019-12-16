@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+ActivityType.create!([
+  {name: "Roller skating", image: "77-roller_skate.svg"},
+  {name: "Football", image: "1-football.svg"},
+  {name: "Weight", image: "92-weight.svg"},
+  {name: "Cycling", image: "81-bicycle.svg"},
+  {name: "Running", image: "79-sneakers_for_running.svg"},
+  {name: "Ice skating", image: "76-skates.svg"},
+  {name: "Golf", image: "62-golf_clubs.svg"},
+  {name: "Skiing", image: "56-skis.svg"},
+  {name: "Skateboarding", image: "53-skateboard.svg"},
+  {name: "Surfing", image: "51-surf.svg"},
+  {name: "Boxing", image: "41-boxing_gloves.svg"},
+  {name: "Baseball", image: "37-baseball_bat.svg"},
+  {name: "Tennis", image: "35-tennis_racquet.svg"},
+  {name: "Table tennis", image: "32-racket_ping_pong.svg"},
+  {name: "Sailing", image: "27-sailfish.svg"},
+  {name: "Volleball", image: "16-volleyball.svg"},
+  {name: "Basketball", image: "6-basketball.svg"},
+  {name: "Hockey", image: "22-putter.svg"}
+])
