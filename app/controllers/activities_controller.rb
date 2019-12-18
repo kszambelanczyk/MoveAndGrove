@@ -80,6 +80,8 @@ class ActivitiesController < ApplicationController
           AND start>=#{ActiveRecord::Base.connection.quote(Time.now - 31.days)}
         GROUP BY 1
       SQL
+      data = Activity.find_by_sql(sql).map{ |i| {start: Time.parse(i[:start_date]).strftime("%F"), duration: i[:duration]} }
+        .each_with_object({}) { |k, h| h[k[:start]] = {:duration => k[:duration] } }
     else
       sql = <<-SQL
         SELECT
@@ -91,8 +93,8 @@ class ActivitiesController < ApplicationController
           AND start>=#{ActiveRecord::Base.connection.quote(Time.now - 31.days)}
       GROUP BY date(start)
       SQL
+      data = Activity.find_by_sql(sql).index_by { |t| t.start_date }
     end
-    data = Activity.find_by_sql(sql).index_by { |t| t.start_date }
 
     @minutes_data = {}
     (0..30).each { |i|
@@ -110,13 +112,15 @@ class ActivitiesController < ApplicationController
       sql = <<-SQL
         SELECT
           date_trunc('day', start) "start_date",
-          SUM(duration) as duration
+          SUM(activities.duration*activity_types.calories_factor) as calories,
         FROM activities
         WHERE user_id=#{ActiveRecord::Base.connection.quote(current_user.id)}
           AND start<=#{ActiveRecord::Base.connection.quote(Time.now)}
           AND start>=#{ActiveRecord::Base.connection.quote(Time.now - 31.days)}
         GROUP BY 1
       SQL
+      data = Activity.find_by_sql(sql).map{ |i| {start: Time.parse(i[:start_date]).strftime("%F"), calories: i[:calories]} }
+        .each_with_object({}) { |k, h| h[k[:start]] = {:calories => k[:calories] } }
     else
       sql = <<-SQL
         SELECT
@@ -130,9 +134,9 @@ class ActivitiesController < ApplicationController
           AND start>=#{ActiveRecord::Base.connection.quote(Time.now - 31.days)}
         GROUP BY date(activities.start)
       SQL
+      data = Activity.find_by_sql(sql).index_by { |t| t.start_date }
     end
 
-    data = Activity.find_by_sql(sql).index_by { |t| t.start_date }
     @calories_data = {}
     (0..30).each { |i|
       i = 30 - i
