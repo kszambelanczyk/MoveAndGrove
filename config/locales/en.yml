@@ -39,3 +39,7 @@ en:
           attributes:
             activity_type:
               required: "Please select the activity type"
+
+  simple_calendar:
+    previous: "<<"
+    next: ">>"

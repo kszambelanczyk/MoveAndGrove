@@ -1,12 +1,26 @@
 <section class="content-main">
   <div class="container-fluid status-part">
-    <div class="row">
-      <div class="col-12 text-center">
-
-        <p class="status">Edit activity</p>
-
+      <div class="row">
+        <div class="col-12">
+          <div class="my-breadcrumb">
+            <ul>
+              <li class="arrow"><i class="fas fa-greater-than"></i></li>
+              <li class="text">
+                <%= link_to "My activities", activities_path%>
+              </li>
+              <li class="arrow"><i class="fas fa-greater-than"></i></li>
+              <li class="text">Edit Activity</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+
+      <div class="row notice-row">
+        <div class="col-12">
+          <p class="notice"><%= notice %></p>
+        </div>
+      </div>
+
   </div>
 
   <div class="container content-part">
@@ -22,3 +36,6 @@
     </div>
   </div>
 </section>
+
+
+

@@ -1,4 +1,63 @@
-<p id="notice"><%= notice %></p>
+<section class="content-main">
+  <div class="container-fluid status-part">
+      <div class="row">
+        <div class="col-12">
+          <div class="my-breadcrumb">
+            <ul>
+              <li class="arrow"><i class="fas fa-greater-than"></i></li>
+              <li class="text">
+                <%= link_to "My activities", activities_path%>
+              </li>
+              <li class="arrow"><i class="fas fa-greater-than"></i></li>
+              <li class="text"><%= @activity.activity_type.name %>, <%= @activity.start.strftime("%b %e, %H:%M") %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+      <div class="row notice-row">
+        <div class="col-12">
+          <p class="notice"><%= notice %></p>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="container content-part">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card activity-card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Activity</h5>
+              <div>
+                <%= link_to edit_activity_path(@activity.id), class: "btn btn-sm btn-blue" do %>
+                  <i class="fas fa-pencil-alt"></i>
+                <% end %>
+                <%= link_to @activity, method: :delete, data: { confirm: 'Do You really want to delete the activity?' }, class: "btn btn-sm btn-alert" do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="svg-place">
+                <%= show_svg(@activity.activity_type.image.url)%>
+              </div>
+            </div>
+            
+            <p>Activity type: <span class="property-val"><%= @activity.activity_type.name %></span></p>
+            <p>Activity duration: <span class="property-val"><%= @activity.duration %> min</span></p>
+            <p>Calories burned: <span class="property-val"><%= @activity.duration * @activity.activity_type.calories_factor %></span></p>
+        
+          
+          
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

@@ -70,8 +70,14 @@ a.navbar-brand{
     span {
         float: right;
         font-weight: 300;
-        font-size: 2rem;
         margin-left: 15px;
+        @media screen and (max-width: 576px) {
+            margin-top: 5px;
+            font-size: 1.5rem;
+        }
+        @media screen and (min-width: 576px) {
+            font-size: 2rem;
+        }
     }
     &:hover {
         color: $white;
@@ -81,13 +87,17 @@ a.navbar-brand{
     }
 }
 
-
 div.content-title {
-    padding: 70px 0 100px 0;
+    padding: 30px 0 130px 0;
     color: $white;
     h1 {
         text-transform: uppercase;
-        font-size: 5rem;
+        @media screen and (max-width: 576px) {
+            font-size: 4rem;
+        }
+        @media screen and (min-width: 576px) {
+            font-size: 5rem;
+        }
         text-align: center;
     }
 }
@@ -160,39 +170,88 @@ a.nav-link {
 
 .content-part {
     background-color: $color3;
+    .row {
+        padding-bottom: 15px;
+        .card {
+            margin: 15px 0 0 0;
+            border: 0 solid rgb(0,0,0);
+        }
 
-    .card {
-        margin: 30px 0 0 0;
-        border: 0 solid rgb(0,0,0);
+        .activity-card {
+            div.svg-place {
+                display: inline-block;
+                margin: 10px 0;
+                background-color: $color3;
+                border-radius: 100%;
+                svg {
+                    width: 110px;
+                    margin: 40px;
+
+                }
+            }
+            .property-val{
+                font-weight: 500;
+            }
+        }
     }
 }
 
 .status-part {
     background-color: white; 
-    a.status-link {
-        display: inline-block;
+
+    .btn-yellow {
         margin: 15px 0;
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
-        font-size: 1.5rem;
+        font-size: 1.0rem;
+        background-color: $color1;
+        color: black;
+        // text-transform: uppercase;
+        &:focus{
+            box-shadow: none;
+        }
+    }
+    
+    .my-breadcrumb {
+        margin: 24px 0;
         color: $color2;
-        text-decoration: underline;
-        &:hover {
-            // color: $color1;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        ul {
+            list-style: none;
+            margin-bottom: 0;
+            padding-left: 0;
+            li {
+                display: inline-block;
+                letter-spacing: 0.1rem;
+                padding-right: 10px;
+                a {
+                    color: #888888;
+                    &:hover {
+                        color: $color2
+                    }
+                }
+            }
+            li.arrow {
+                // font-size: 1.4rem;
+            }
+
+        }
+        .arrow {
+            color: #b9b9b9
+        }
+    }
+
+    .notice-row {
+        background-color: $color3;
+        div {
+            text-align: center;
+            p {
+                margin: 10px 0;
+                color: #3bbf3b;
+            }
         }
     }
 }
 
-.btn-yellow {
-    margin: 15px 0;
-    font-size: 1.5rem;
-    background-color: $color1;
-    color: black;
-    text-transform: uppercase;
-    &:focus{
-        box-shadow: none;
-    }
-}
 .form-group {
     .error-note {
         font-size: 0.9rem;
@@ -263,5 +322,41 @@ input.btn-submit {
         &:hover {
             text-decoration: none;
         }
+    }
+    .calendar-heading {
+        a {
+            color: $color2;
+            background-color: $color1;
+            padding: 0 3px 2px 3px;
+            margin: 5px;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        margin-bottom: 5px;
+    }
+}
+
+.chart-title {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.btn-blue {
+    color: $color3!important;
+    background-color: #03a9f3;
+    margin-left: 10px;
+    &:hover {
+        background-color: #038fcd;
+    }
+}
+.btn-alert {
+    color: $color3!important;
+    background-color: #e46a76;
+    margin-left: 10px;
+    &:hover {
+        background-color: #de4a58;
     }
 }

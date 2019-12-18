@@ -71,6 +71,7 @@ class ActivityTypesController < ApplicationController
   def activity_type_params
     params.fetch(:activity_type, {}).permit(
       :name,
+      :calories_factor,
       :image
     )
   end
