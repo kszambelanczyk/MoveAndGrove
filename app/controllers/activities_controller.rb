@@ -5,6 +5,11 @@ class ActivitiesController < ApplicationController
 
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
+  before_action except: [:create, :update, :destroy] do
+    @title = "Activities"  
+    @background_class = "activity-background"
+  end
+
   # GET /activities
   # GET /activities.json
   def index

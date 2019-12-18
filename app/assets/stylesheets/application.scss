@@ -35,6 +35,9 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import "@fortawesome/fontawesome-free/scss/solid";
 
 // @import "@fortawesome/fontawesome-free/css/all";
+body {
+    background-color: #edf1f5;
+}
 
 body.body-home {
     background-image: url(/images/4s_b.jpg);
@@ -42,31 +45,43 @@ body.body-home {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: $color2;
-
-
     color: $white;
+    overflow: hidden;
 }
 
 .content-title-background {
-    background-image: url(/images/2s_y_b_n.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
+}
 
+.activity-background {
+    background-image: url(/images/2s_y_b_n.jpg);
+}
+.contact-background {
+    background-image: url(/images/8s_b_n.jpg);
+}
+.about-background {
+    background-image: url(/images/3s_b_n.jpg);
 }
 
 // $break-small: 573px;
 // $break-medium: 768px;
 
 section.header {
-    padding: 30px;
+    padding: 10px;
 }
 
 a.navbar-brand{
     color: $white;
     img {
-        height: 50px;
+        @media screen and (max-width: 576px) {
+            height: 40px;
+        }
+        @media screen and (min-width: 576px) {
+            height: 50px;
+            width: 42px;
+        }
     }
     span {
         float: right;
@@ -74,7 +89,7 @@ a.navbar-brand{
         margin-left: 15px;
         @media screen and (max-width: 576px) {
             margin-top: 5px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
         @media screen and (min-width: 576px) {
             font-size: 2rem;
@@ -89,12 +104,12 @@ a.navbar-brand{
 }
 
 div.content-title {
-    padding: 30px 0 130px 0;
+    padding: 35px 0 130px 0;
     color: $white;
     h1 {
         text-transform: uppercase;
         @media screen and (max-width: 576px) {
-            font-size: 4rem;
+            font-size: 3rem;
         }
         @media screen and (min-width: 576px) {
             font-size: 5rem;
@@ -125,10 +140,21 @@ a.nav-link {
     }
 }
 
+.card {
+    margin: 15px 0 0 0;
+    border: 0 solid rgb(0,0,0);
+}
+
 
 .jumbotron-home {
-    padding-left: 6rem;
-    padding-top: 25vh;
+    @media screen and (max-width: 768px) {
+        padding-top: 10vh;
+        padding-left: 1rem;
+    }
+    @media screen and (min-width: 768px) {
+        padding-top: 25vh;
+        padding-left: 3rem;
+    }
     background-color: inherit;
     h1 {
         font-size: 6rem;
@@ -138,19 +164,43 @@ a.nav-link {
         color: $color1;
     }
     p.title {
-        line-height: 3.5rem;
         color: $color1;
-        text-transform: uppercase;
-    }
+        text-transform: uppercase;    }
     .line1 {
-        font-size: 7rem;
+        @media screen and (max-width: 768px) {
+            font-size: 4rem;
+            letter-spacing: 1.0rem;
+            line-height: 1.9rem;
+        }
+        @media screen and (min-width: 768px) {
+            font-size: 7rem;
+            letter-spacing: 1.6rem;
+            line-height: 3.5rem;
+        }
         font-weight: 600;
-        letter-spacing: 1.6rem;
     }
     .line2 {
-        font-size: 4rem;
+        @media screen and (max-width: 768px) {
+            font-size: 2.35rem;
+            letter-spacing: 1.0rem;
+            line-height: 1.9rem;
+        }
+        @media screen and (min-width: 768px) {
+            font-size: 4rem;
+            letter-spacing: 1.8rem;
+            line-height: 3.5rem;
+        }
         font-weight: 400;
-        letter-spacing: 1.8rem;
+    }
+    p.title-description {
+        text-align: justify;
+        line-height: 1.2rem;
+        @media screen and (max-width: 768px) {
+            width: 17rem;
+        }
+        @media screen and (min-width: 768px) {
+            width: 28rem;
+        }
     }
 }
 
@@ -173,11 +223,6 @@ a.nav-link {
     background-color: $color3;
     .row {
         padding-bottom: 15px;
-        .card {
-            margin: 15px 0 0 0;
-            border: 0 solid rgb(0,0,0);
-        }
-
         .activity-card {
             div.svg-place {
                 display: inline-block;
@@ -359,5 +404,34 @@ input.btn-submit {
     margin-left: 10px;
     &:hover {
         background-color: #de4a58;
+    }
+}
+
+.about-part {
+    .row {
+        margin: 50px 0;
+    }
+}
+
+.footer {
+    background-color: $color2;
+    color: $color3;
+    .col-6 {
+        padding: 20px;
+    }
+}
+
+.login-card {
+    border: 0px;
+    color: $color2;
+    h3 {
+        margin-top: 10px;
+        text-align: center;
+    }
+    form {
+        margin: 10px 30px;
+        label {
+            text-align: left;
+        }
     }
 }
