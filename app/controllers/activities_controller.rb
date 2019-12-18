@@ -112,7 +112,7 @@ class ActivitiesController < ApplicationController
       sql = <<-SQL
         SELECT
           date_trunc('day', start) "start_date",
-          SUM(activities.duration*activity_types.calories_factor) as calories,
+          SUM(activities.duration*activity_types.calories_factor) as calories
         FROM activities
         WHERE user_id=#{ActiveRecord::Base.connection.quote(current_user.id)}
           AND start<=#{ActiveRecord::Base.connection.quote(Time.now)}
