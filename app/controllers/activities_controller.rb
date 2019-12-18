@@ -114,6 +114,8 @@ class ActivitiesController < ApplicationController
           date_trunc('day', start) "start_date",
           SUM(activities.duration*activity_types.calories_factor) as calories
         FROM activities
+        JOIN activity_types ON
+          activities.activity_type_id = activity_types.id
         WHERE user_id=#{ActiveRecord::Base.connection.quote(current_user.id)}
           AND start<=#{ActiveRecord::Base.connection.quote(Time.now)}
           AND start>=#{ActiveRecord::Base.connection.quote(Time.now - 31.days)}
