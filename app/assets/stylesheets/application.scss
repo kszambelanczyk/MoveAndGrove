@@ -28,7 +28,8 @@ $navbar-dark-active-color:          #fff !default;
 $navbar-dark-disabled-color:        rgba($white, .25) !default;
 
 @import "bootstrap/scss/bootstrap";
-@import "pc-bootstrap4-datetimepicker/src/sass/bootstrap-datetimepicker-build.css";
+// @import "pc-bootstrap4-datetimepicker/src/sass/bootstrap-datetimepicker-build.css";
+@import "pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css";
 
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
