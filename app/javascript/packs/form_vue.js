@@ -2,7 +2,7 @@ import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import { Datetime } from 'vue-datetime'
 // You need a specific loader for CSS files
-import 'vue-datetime/dist/vue-datetime.css'
+import 'vue-datetime/dist/vue-datetime.min.css'
 
 Vue.use(Datetime)
 Vue.use(TurbolinksAdapter)
