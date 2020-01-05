@@ -4,8 +4,10 @@
 
   <body class="body-content">
 
-  <div class="content-title-background <%= @background_class %>">
-    <%= render "shared/header" %>
+  <div class="content-title-background <%=@background_class%>">
+    <section class="header-content">
+      <%= render "shared/header" %>
+    </section>
 
     <div class="content-title text-center">
       <h1><%= @title %></h1>
@@ -15,12 +17,20 @@
   <%= yield %>
 
   <div class="footer">
-    <div class="row">
-      <div class="col-6">
-        Footer
-      </div>
-      <div class="col-6">
-
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4  offset-md-2 contact-first-col">
+          <span>Move And Grove</span>
+          <span>1193  Charter Street</span>
+          <span>Lenexa, KS</span>
+          <span>phone: 913-825-6454</span>
+          <span>email: <a href="mailto:contact@moveandgrove.com">contact@moveandgrove.com</a></span> 
+        </div>
+        <div class="col-md-4 contact-second-col">
+          <a href="https://twitter.com/"><span class="fab fa-twitter-square"></span></a>
+          <a href="https://facebook.com/"><span class="fab fa-facebook-square"></span></a>
+          <a href="https://www.instagram.com/"><span class="fab fa-instagram"></span></a>
+        </div>
       </div>
     </div>
   </div>

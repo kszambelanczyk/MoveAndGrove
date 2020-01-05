@@ -21,12 +21,13 @@
             </div>
           <% end %>
 
-          <div class="actions">
-            <%= f.submit "Log in" %>
+          <div class="actions text-center">
+            <%= f.submit "Log in", class: "btn btn-submit" %>
           </div>
         <% end %>
-
-        <%= render "devise/shared/links" %>
+        <div class="login-links">
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
   </div>
