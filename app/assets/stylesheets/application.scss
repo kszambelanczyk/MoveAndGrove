@@ -472,17 +472,20 @@ input.btn-submit {
     }
 }
 
-.login-card {
-    border: 0px;
-    color: $color2;
-    h3 {
-        margin-top: 10px;
-        text-align: center;
-    }
-    form {
-        margin: 10px 30px;
-        label {
-            text-align: left;
+.login-container{
+    padding-top: 90px;
+    .login-card {
+        border: 0px;
+        color: $color2;
+        h3 {
+            margin-top: 10px;
+            text-align: center;
+        }
+        form {
+            margin: 10px 30px;
+            label {
+                text-align: left;
+            }
         }
     }
 }
