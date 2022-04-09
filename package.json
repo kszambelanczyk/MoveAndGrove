@@ -12,7 +12,7 @@
     "chartkick": "^3.2.0",
     "jquery": "^3.4.1",
     "luxon": "^1.21.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
